@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dex-client-debank"
+version = "0.1.0"
+description = "Minimal Python client for reverse-engineered DeBank web API endpoints."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Research Client Maintainers" }]
+dependencies = ["httpx>=0.27"]
+keywords = ["debank", "crypto", "wallet", "portfolio", "reverse-engineered"]
+classifiers = ["Programming Language :: Python :: 3", "Typing :: Typed"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/bigidulka/dex-client-debank"
+Documentation = "https://bigidulka.github.io/dex-client-debank/"
+Repository = "https://github.com/bigidulka/dex-client-debank"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dex_client_debank"]
+artifacts = ["src/dex_client_debank/generated/debank-signer-modules.json", "src/dex_client_debank/sign_headers.js"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
